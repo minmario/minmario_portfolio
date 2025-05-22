@@ -27,13 +27,21 @@ export function PDFDownloadButton() {
       const pdfWidth = pdf.internal.pageSize.getWidth()
       const pdfHeight = pdf.internal.pageSize.getHeight()
 
-      // 캡처할 섹션들
+      // 메인 컨텐츠 영역 선택 (헤더와 푸터 제외)
+      const mainContent = document.querySelector("main")
+      if (!mainContent) {
+        throw new Error("메인 컨텐츠를 찾을 수 없습니다.")
+      }
+
+      // 모든 섹션 선택 (헤더와 푸터 제외)
       const sections = [
         document.getElementById("about"),
         document.getElementById("education"),
         document.getElementById("certifications"),
         document.getElementById("skills"),
         document.getElementById("external-links"),
+        document.getElementById("projects"),
+        document.getElementById("contact"),
       ]
 
       // 각 섹션을 캡처하여 PDF에 추가
@@ -42,10 +50,21 @@ export function PDFDownloadButton() {
       for (const section of sections) {
         if (!section) continue
 
+        console.log(`캡처 중: ${section.id}`)
+
+        // 섹션 캡처 전 스크롤
+        section.scrollIntoView({ behavior: "auto", block: "start" })
+        // 렌더링이 완료될 때까지 잠시 대기
+        await new Promise((resolve) => setTimeout(resolve, 100))
+
         const canvas = await html2canvas(section, {
-          scale: 2, // 고해상도로 렌더링
+          scale: 1.5, // 고해상도로 렌더링
           useCORS: true,
           logging: false,
+          windowWidth: 1200, // 일관된 너비로 렌더링
+          windowHeight: section.scrollHeight,
+          allowTaint: true,
+          backgroundColor: "#ffffff",
         })
 
         const imgData = canvas.toDataURL("image/png")
@@ -66,7 +85,7 @@ export function PDFDownloadButton() {
       pdf.save("민재홍_이력서.pdf")
     } catch (error) {
       console.error("PDF 생성 중 오류 발생:", error)
-      alert("PDF 생성 중 오류가 발생했습니다.")
+      alert("PDF 생성 중 오류가 발생했습니다: " + (error instanceof Error ? error.message : String(error)))
     } finally {
       setIsGenerating(false)
     }
