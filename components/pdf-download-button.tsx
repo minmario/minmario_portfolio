@@ -18,6 +18,9 @@ export function PDFDownloadButton() {
     try {
       setIsGenerating(true)
 
+      // 현재 스크롤 위치 저장
+      const scrollPosition = window.scrollY
+
       // CDN으로 로드된 전역 객체 사용
       const { jsPDF } = window.jspdf
       const html2canvas = window.html2canvas
@@ -26,12 +29,6 @@ export function PDFDownloadButton() {
       const pdf = new jsPDF("p", "mm", "a4")
       const pdfWidth = pdf.internal.pageSize.getWidth()
       const pdfHeight = pdf.internal.pageSize.getHeight()
-
-      // 메인 컨텐츠 영역 선택 (헤더와 푸터 제외)
-      const mainContent = document.querySelector("main")
-      if (!mainContent) {
-        throw new Error("메인 컨텐츠를 찾을 수 없습니다.")
-      }
 
       // 모든 섹션 선택 (헤더와 푸터 제외)
       const sections = [
@@ -52,19 +49,20 @@ export function PDFDownloadButton() {
 
         console.log(`캡처 중: ${section.id}`)
 
-        // 섹션 캡처 전 스크롤
-        section.scrollIntoView({ behavior: "auto", block: "start" })
-        // 렌더링이 완료될 때까지 잠시 대기
-        await new Promise((resolve) => setTimeout(resolve, 100))
-
+        // 스크롤 없이 캡처
         const canvas = await html2canvas(section, {
           scale: 1.5, // 고해상도로 렌더링
           useCORS: true,
           logging: false,
           windowWidth: 1200, // 일관된 너비로 렌더링
-          windowHeight: section.scrollHeight,
           allowTaint: true,
           backgroundColor: "#ffffff",
+          // 스크롤 없이 전체 요소 캡처
+          height: section.scrollHeight,
+          width: section.scrollWidth,
+          // 스크롤 관련 옵션 비활성화
+          scrollX: 0,
+          scrollY: -window.scrollY,
         })
 
         const imgData = canvas.toDataURL("image/png")
@@ -83,6 +81,9 @@ export function PDFDownloadButton() {
 
       // PDF 저장
       pdf.save("민재홍_이력서.pdf")
+
+      // 원래 스크롤 위치로 복원
+      window.scrollTo(0, scrollPosition)
     } catch (error) {
       console.error("PDF 생성 중 오류 발생:", error)
       alert("PDF 생성 중 오류가 발생했습니다: " + (error instanceof Error ? error.message : String(error)))
