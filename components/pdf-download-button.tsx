@@ -42,15 +42,28 @@ export function PDFDownloadButton() {
       ]
 
       // 각 섹션을 캡처하여 PDF에 추가
-      let currentPosition = 10
+      let currentPosition = 5 // 상단 여백 줄임
 
       for (const section of sections) {
         if (!section) continue
 
         console.log(`캡처 중: ${section.id}`)
 
+        // 섹션의 실제 내용 부분만 캡처하기 위한 설정
+        const sectionRect = section.getBoundingClientRect()
+        const sectionContent = section.querySelector(".container")
+
+        if (!sectionContent) continue
+
+        // 섹션 제목과 설명 부분만 가져오기
+        const titleElement = sectionContent.querySelector("h2")
+        const descriptionElement = sectionContent.querySelector("p")
+
+        // 섹션 내용 부분 (카드, 그리드 등)
+        const contentElement = sectionContent.querySelector(".grid, .flex, .card")
+
         // 스크롤 없이 캡처
-        const canvas = await html2canvas(section, {
+        const canvas = await html2canvas(sectionContent, {
           scale: 1.5, // 고해상도로 렌더링
           useCORS: true,
           logging: false,
@@ -58,25 +71,25 @@ export function PDFDownloadButton() {
           allowTaint: true,
           backgroundColor: "#ffffff",
           // 스크롤 없이 전체 요소 캡처
-          height: section.scrollHeight,
-          width: section.scrollWidth,
+          height: sectionContent.scrollHeight,
+          width: sectionContent.scrollWidth,
           // 스크롤 관련 옵션 비활성화
           scrollX: 0,
           scrollY: -window.scrollY,
         })
 
         const imgData = canvas.toDataURL("image/png")
-        const imgWidth = pdfWidth - 20
+        const imgWidth = pdfWidth - 10 // 좌우 여백 줄임
         const imgHeight = (canvas.height * imgWidth) / canvas.width
 
         // 새 페이지가 필요한지 확인
         if (currentPosition + imgHeight > pdfHeight) {
           pdf.addPage()
-          currentPosition = 10
+          currentPosition = 5 // 새 페이지 상단 여백 줄임
         }
 
-        pdf.addImage(imgData, "PNG", 10, currentPosition, imgWidth, imgHeight)
-        currentPosition += imgHeight + 10
+        pdf.addImage(imgData, "PNG", 5, currentPosition, imgWidth, imgHeight)
+        currentPosition += imgHeight + 3 // 섹션 간 여백 줄임
       }
 
       // PDF 저장
