@@ -16,7 +16,7 @@ export function Certifications() {
       score: "855점",
       issuer: "ETS",
       date: "2024-10-27",
-      description: "영어 의사소통 능력을 평가하는 국제 공인 시험, 해외 거주 경험(인도네시아) 있음",
+      description: "영어 의사소통 능력을 평가하는 국제 공인 시험, 해외 거주 (인도네시아) & 국제학교 경험 있음",
     },
     {
       id: 3,
