@@ -37,7 +37,7 @@ export function Projects() {
         "호텔 예약 및 관리 시스템의 백엔드 API를 Spring Boot 기반으로 구현한 팀 프로젝트입니다. 회원, 스태프, 관리자 등 다양한 역할 기반의 기능을 분리하고, JWT 인증 및 포인트/등급/예약 관리 등 복합 비즈니스 로직을 포함합니다.",
       image: "/images/hotel-project.png",
       tags: ["Spring Boot", "Spring Security", "JPA", "Gradle", "JWT", "MySQL", "Docker", "RESTful API"],
-      demoUrl: "http://www,sistchillhotel.com/",
+      demoUrl: "http://www.sistchillhotel.com/",
       githubUrl: "https://github.com/minmario/MyGitRepository",
       highlights: [
         "관리자/직원/회원의 역할 기반 인증 및 권한 관리 구현 (JWT + Security)",
