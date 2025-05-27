@@ -61,7 +61,7 @@ export function Projects() {
       demoUrl: "https://colab.research.google.com/drive/1atlCZgiD6Od3M9BCbKKQj-EA2J7oIHpH",
       githubUrl: "https://github.com/minmario/ml-projects",
       highlights: [
-        "데이터 전처리 및 탐색적 데이터 분석(EDA)",
+        
         "분류 모델 7종 구현: Logistic Regression, Decision Tree, Random Forest, SVM, MLP, Naive Bayes, XGBoost",
         "ROC Curve 및 Confusion Matrix 시각화",
         "GridSearchCV를 통한 하이퍼파라미터 튜닝",
