@@ -38,7 +38,7 @@ export function Projects() {
       image: "/images/hotel-project.png",
       tags: ["Spring Boot", "Spring Security", "JPA", "Gradle", "JWT", "MySQL", "Docker", "RESTful API"],
       demoUrl: "http://www.sistchillhotel.com/",
-      githubUrl: "https://github.com/minmario/MyGitRepository",
+      githubUrl: "https://github.com/minmario/SIST-Chill-Hotel-Portfolio",
       highlights: [
         "관리자/직원/회원의 역할 기반 인증 및 권한 관리 구현 (JWT + Security)",
         "회원 등급 시스템 및 포인트 로직 설계 및 API 개발",
