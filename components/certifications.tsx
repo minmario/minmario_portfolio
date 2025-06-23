@@ -12,6 +12,14 @@ export function Certifications() {
     },
     {
       id: 2,
+      name: "SQLD",
+      issuer: "한국데이터산업진흥원",
+      date: "2025-06-27(예정)",
+      description: "SQL 개발자 자격증",
+    }
+    ,
+    {
+      id: 3,
       name: "TOEIC",
       score: "855점",
       issuer: "ETS",
@@ -19,7 +27,7 @@ export function Certifications() {
       description: "영어 의사소통 능력을 평가하는 국제 공인 시험, 해외 거주 (인도네시아) & 국제학교 경험 있음",
     },
     {
-      id: 3,
+      id: 4,
       name: "운전면허 1종 보통",
       issuer: "도로교통공단",
       date: "2020-02-03",
