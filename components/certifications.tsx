@@ -14,7 +14,7 @@ export function Certifications() {
       id: 2,
       name: "SQLD",
       issuer: "한국데이터산업진흥원",
-      date: "2025-06-27(예정)",
+      date: "2025-06-27",
       description: "SQL 개발자 자격증",
     }
     ,
