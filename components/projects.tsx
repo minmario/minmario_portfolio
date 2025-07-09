@@ -3,10 +3,18 @@
 import { useState } from "react"
 import Image from "next/image"
 import Link from "next/link"
-import { ExternalLink, Github } from "lucide-react"
+import { ExternalLink, Github, ImageIcon, ChevronLeft, ChevronRight } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog"
 
 type ProjectType = "all" | "team" | "personal"
 
@@ -15,7 +23,7 @@ interface Project {
   title: string
   subtitle: string
   description: string
-  image: string
+  images: string[]
   tags: string[]
   demoUrl: string
   githubUrl: string
@@ -27,6 +35,9 @@ interface Project {
 
 export function Projects() {
   const [activeFilter, setActiveFilter] = useState<ProjectType>("all")
+  const [selectedProjectImages, setSelectedProjectImages] = useState<string[]>([])
+  const [currentImageIndex, setCurrentImageIndex] = useState(0)
+  const [dialogOpen, setDialogOpen] = useState(false)
 
   const projects: Project[] = [
     {
@@ -35,7 +46,7 @@ export function Projects() {
       subtitle: "호텔 예약 및 관리 시스템 백엔드 API 개발",
       description:
         "호텔 예약 및 관리 시스템의 백엔드 API를 Spring Boot 기반으로 구현한 팀 프로젝트입니다. 회원, 스태프, 관리자 등 다양한 역할 기반의 기능을 분리하고, JWT 인증 및 포인트/등급/예약 관리 등 복합 비즈니스 로직을 포함합니다.",
-      image: "/images/hotel-project.png",
+      images: ["/images/hotel-project.png", "/placeholder.svg?height=600&width=800&text=Hotel+Project+Image+2"],
       tags: ["Spring Boot", "Spring Security", "JPA", "Gradle", "JWT", "MySQL", "Docker", "RESTful API"],
       demoUrl: "http://www.sistchillhotel.com/",
       githubUrl: "https://github.com/minmario/SIST-Chill-Hotel-Portfolio",
@@ -56,12 +67,14 @@ export function Projects() {
       subtitle: "심장질환 예측을 위한 머신러닝 모델 비교 및 성능 분석",
       description:
         "심장병 환자 데이터를 기반으로 다양한 머신러닝 분류 모델을 적용해보고, 성능을 비교·분석한 프로젝트입니다. 총 7개의 모델(Logistic Regression, SVM, Random Forest 등)을 학습시킨 뒤 평가 지표 및 ROC 곡선을 통해 모델의 예측 성능을 시각화했습니다.",
-      image: "/images/heart-disease-prediction.png",
+      images: [
+        "/images/heart-disease-prediction.png",
+        "/placeholder.svg?height=600&width=800&text=Heart+Disease+Image+2",
+      ],
       tags: ["Python", "Jupyter Notebook", "scikit-learn", "XGBoost", "pandas", "matplotlib", "seaborn"],
       demoUrl: "https://colab.research.google.com/drive/1atlCZgiD6Od3M9BCbKKQj-EA2J7oIHpH",
       githubUrl: "https://github.com/minmario/ml-projects",
       highlights: [
-        
         "분류 모델 7종 구현: Logistic Regression, Decision Tree, Random Forest, SVM, MLP, Naive Bayes, XGBoost",
         "ROC Curve 및 Confusion Matrix 시각화",
         "GridSearchCV를 통한 하이퍼파라미터 튜닝",
@@ -77,7 +90,7 @@ export function Projects() {
       subtitle: "JSP/Servlet 기반 풀스택 이커머스 플랫폼",
       description:
         "Java 8, JSP/Servlet, MyBatis를 활용한 전통적인 MVC 패턴의 웹 애플리케이션입니다. 관리자, 판매자, 사용자 모듈로 역할을 분리하고, Amazon S3를 이용한 이미지 업로드, 로그인/회원가입, 관리자 페이지, 포인트 시스템 등을 포함한 풀스택 웹 서비스입니다.",
-      image: "/images/java-web-project.png",
+      images: ["/images/java-web-project.png", "/placeholder.svg?height=600&width=800&text=Java+Web+Image+2"],
       tags: ["Java", "JSP", "Servlet", "MyBatis", "MySQL", "Maven", "AWS S3", "JSTL", "Bootstrap", "jQuery"],
       demoUrl: "#",
       githubUrl: "https://github.com/minmario/shop",
@@ -99,7 +112,7 @@ export function Projects() {
       subtitle: "개인 포트폴리오 웹사이트",
       description:
         "Next.js와 Tailwind CSS를 사용하여 개발한 개인 포트폴리오 웹사이트입니다. 반응형 디자인과 모던한 UI/UX를 적용했습니다.",
-      image: "/images/portfolio-website.png",
+      images: ["/images/portfolio-website.png", "/placeholder.svg?height=600&width=800&text=Portfolio+Image+2"],
       tags: ["Next.js", "React", "Tailwind CSS", "TypeScript"],
       demoUrl: "#",
       githubUrl: "#",
@@ -114,7 +127,7 @@ export function Projects() {
       subtitle: "PHP와 MySQL 기반의 CRUD 웹 애플리케이션",
       description:
         "기초적인 PHP와 MySQL을 활용한 재고 및 주문 관리 시스템입니다. 원자재, 주문, 계약, 대리인 등의 정보를 폼을 통해 입력하고 조회할 수 있는 CRUD 기능을 구현했습니다. 웹 기반 데이터베이스 애플리케이션의 기본 원리를 학습하기 위한 프로젝트입니다.",
-      image: "/images/php-project.png",
+      images: ["/images/php-project.png", "/placeholder.svg?height=600&width=800&text=PHP+Project+Image+2"],
       tags: ["PHP", "MySQL", "mysqli", "HTML", "XAMPP"],
       demoUrl: "#",
       githubUrl: "https://github.com/minmario/my_php_project",
@@ -129,12 +142,57 @@ export function Projects() {
         "PHP와 MySQL을 활용한 기본적인 CRUD 웹 애플리케이션 개발 완료. 폼 데이터 처리 및 데이터베이스 연동 기술 습득. 웹 기반 재고 관리 시스템의 기초 흐름 이해.",
       type: "personal",
     },
+    {
+      id: 6,
+      title: "무신사 클론 프로젝트",
+      subtitle: "풀스택 이커머스 및 소셜 미디어 플랫폼",
+      description:
+        "무신사 웹사이트의 주요 기능을 클론하여 구현한 풀스택 프로젝트입니다. 상품 목록, 상세 페이지, 결제 프로세스, 카테고리 관리, 사용자 피드 및 이미지 업로드 등 다양한 기능을 포함합니다.",
+      images: [
+        "/images/musinsa/1.png",
+        "/images/musinsa/2.png",
+        "/images/musinsa/3.png",
+        "/images/musinsa/4.png",
+        "/images/musinsa/5.png",
+        "/images/musinsa/6.png",
+        "/images/musinsa/7.png",
+        "/images/musinsa/8.png",
+      ],
+      tags: ["React", "Next.js", "Spring Boot", "MySQL", "Tailwind CSS", "RESTful API", "Docker"],
+      demoUrl: "#", // 실제 데모 URL이 있다면 여기에 추가
+      githubUrl: "#", // 실제 GitHub URL이 있다면 여기에 추가
+      highlights: [
+        "상품 목록 및 상세 페이지 구현 (필터링, 검색 포함)",
+        "장바구니 및 결제 프로세스 시뮬레이션",
+        "사용자 피드 및 이미지 업로드 기능 개발",
+        "관리자용 카테고리 및 상품 관리 시스템",
+        "반응형 UI/UX 디자인 적용",
+        "백엔드 API 연동 및 데이터베이스 관리",
+      ],
+      results:
+        "무신사 웹사이트의 핵심 기능을 모방하여 풀스택 개발 역량 강화. 사용자 친화적인 인터페이스와 관리자 기능을 통합한 복합 웹 서비스 구현. 실제 서비스와 유사한 사용자 경험 제공.",
+      type: "team", // 또는 "personal"
+    },
   ]
 
   const filteredProjects = projects.filter((project) => {
     if (activeFilter === "all") return true
     return project.type === activeFilter
   })
+
+  const handleImageModalOpen = (images: string[]) => {
+    setSelectedProjectImages(images)
+    setCurrentImageIndex(0) // 모달 열 때 항상 첫 번째 이미지부터 시작
+    setDialogOpen(true)
+  }
+
+  const handlePrevImage = () => {
+    setCurrentImageIndex((prevIndex) => Math.max(0, prevIndex - 1))
+  }
+
+  const handleNextImage = () => {
+    setCurrentImageIndex((prevIndex) => Math.min(selectedProjectImages.length - 1, prevIndex + 1))
+  }
 
   return (
     <section id="projects" className="py-32 bg-muted/30">
@@ -183,7 +241,7 @@ export function Projects() {
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                   <div className="relative h-64 md:h-full w-full">
                     <Image
-                      src={project.image || "/placeholder.svg"}
+                      src={project.images[0] || "/placeholder.svg"} // 첫 번째 이미지를 썸네일로 사용
                       alt={project.title}
                       fill
                       className="object-cover"
@@ -222,7 +280,57 @@ export function Projects() {
                         ))}
                       </div>
                     </CardContent>
-                    <CardFooter className="p-0 pt-6 flex justify-between">
+                    <CardFooter className="p-0 pt-6 flex justify-between items-center flex-wrap gap-2">
+                      {/* 이미지 보기 모달 버튼 */}
+                      <Dialog open={dialogOpen} onOpenChange={setDialogOpen}>
+                        <DialogTrigger asChild>
+                          <Button variant="outline" size="sm" onClick={() => handleImageModalOpen(project.images)}>
+                            <ImageIcon className="mr-2 h-4 w-4" />
+                            이미지 보기
+                          </Button>
+                        </DialogTrigger>
+                        <DialogContent className="max-w-2xl p-6 overflow-hidden">
+                          <DialogHeader className="pb-4">
+                            <DialogTitle>{project.title} 이미지</DialogTitle>
+                            <DialogDescription>{project.subtitle} 프로젝트의 상세 이미지입니다.</DialogDescription>
+                          </DialogHeader>
+                          <div className="relative w-full h-[400px] sm:h-[500px] md:h-[600px] lg:h-[700px] overflow-hidden">
+                            {selectedProjectImages.length > 0 && (
+                              <Image
+                                src={selectedProjectImages[currentImageIndex] || "/placeholder.svg"}
+                                alt={`${project.title} 이미지 ${currentImageIndex + 1}`}
+                                fill
+                                className="object-contain"
+                              />
+                            )}
+                          </div>
+                          {selectedProjectImages.length > 1 && ( // 이미지가 1개 이상일 때만 페이징 표시
+                            <div className="flex items-center justify-center gap-4 mt-4">
+                              <Button
+                                variant="ghost"
+                                size="icon"
+                                onClick={handlePrevImage}
+                                disabled={currentImageIndex === 0}
+                              >
+                                <ChevronLeft className="h-6 w-6" />
+                                <span className="sr-only">이전 이미지</span>
+                              </Button>
+                              <span className="text-sm font-medium">
+                                {currentImageIndex + 1} / {selectedProjectImages.length}
+                              </span>
+                              <Button
+                                variant="ghost"
+                                size="icon"
+                                onClick={handleNextImage}
+                                disabled={currentImageIndex === selectedProjectImages.length - 1}
+                              >
+                                <ChevronRight className="h-6 w-6" />
+                                <span className="sr-only">다음 이미지</span>
+                              </Button>
+                            </div>
+                          )}
+                        </DialogContent>
+                      </Dialog>
                       {!project.hideDemoButton &&
                         (project.demoUrl === "#" ? (
                           <Button variant="outline" size="sm" disabled>
@@ -237,7 +345,6 @@ export function Projects() {
                             </Link>
                           </Button>
                         ))}
-
                       {project.githubUrl === "#" ? (
                         <Button
                           variant="outline"
