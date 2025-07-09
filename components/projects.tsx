@@ -23,7 +23,7 @@ interface Project {
   title: string
   subtitle: string
   description: string
-  images: string[]
+  images: string[] // 'image: string' 대신 'images: string[]'으로 변경
   tags: string[]
   demoUrl: string
   githubUrl: string
@@ -84,28 +84,7 @@ export function Projects() {
         "XGBoost와 RandomForest 모델이 전체적으로 가장 우수한 성능을 보였으며, 튜닝 후 F1-score 기준 91% 이상의 성능 확보. 모델별 ROC-AUC 시각화를 통해 민감도/특이도 균형 분석.",
       type: "team",
     },
-    {
-      id: 3,
-      title: "Java 웹 쇼핑몰",
-      subtitle: "JSP/Servlet 기반 풀스택 이커머스 플랫폼",
-      description:
-        "Java 8, JSP/Servlet, MyBatis를 활용한 전통적인 MVC 패턴의 웹 애플리케이션입니다. 관리자, 판매자, 사용자 모듈로 역할을 분리하고, Amazon S3를 이용한 이미지 업로드, 로그인/회원가입, 관리자 페이지, 포인트 시스템 등을 포함한 풀스택 웹 서비스입니다.",
-      images: ["/images/java-web-project.png", "/placeholder.svg?height=600&width=800&text=Java+Web+Image+2"],
-      tags: ["Java", "JSP", "Servlet", "MyBatis", "MySQL", "Maven", "AWS S3", "JSTL", "Bootstrap", "jQuery"],
-      demoUrl: "#",
-      githubUrl: "https://github.com/minmario/shop",
-      highlights: [
-        "관리자/판매자/사용자 역할 기반 모듈 분리 및 권한 관리",
-        "MyBatis와 DAO/VO 패턴을 활용한 데이터베이스 연동",
-        "Amazon S3 연동 이미지 업로드 기능 구현",
-        "회원가입, 로그인, 상품 조회, 장바구니, 주문 기능 개발",
-        "쿠폰 발급 및 사용, 포인트 시스템 구현",
-        "관리자용 회원/판매자 관리, 카테고리 등록 및 통계 기능",
-      ],
-      results:
-        "전통적인 Java 웹 개발 패턴을 활용한 풀스택 이커머스 플랫폼 구현. 역할 기반 접근 제어와 클라우드 스토리지 연동을 통한 확장성 있는 시스템 설계. Maven을 활용한 빌드 자동화 및 Tomcat 서버 배포 경험.",
-      type: "team",
-    },
+
     {
       id: 4,
       title: "포트폴리오 웹사이트",
@@ -182,7 +161,7 @@ export function Projects() {
 
   const handleImageModalOpen = (images: string[]) => {
     setSelectedProjectImages(images)
-    setCurrentImageIndex(0) // 모달 열 때 항상 첫 번째 이미지부터 시작
+    setCurrentImageIndex(0)
     setDialogOpen(true)
   }
 
@@ -241,7 +220,7 @@ export function Projects() {
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                   <div className="relative h-64 md:h-full w-full">
                     <Image
-                      src={project.images[0] || "/placeholder.svg"} // 첫 번째 이미지를 썸네일로 사용
+                      src={project.images[0] || "/placeholder.svg"}
                       alt={project.title}
                       fill
                       className="object-cover"
@@ -281,70 +260,76 @@ export function Projects() {
                       </div>
                     </CardContent>
                     <CardFooter className="p-0 pt-6 flex justify-between items-center flex-wrap gap-2">
-                      {/* 이미지 보기 모달 버튼 */}
-                      <Dialog open={dialogOpen} onOpenChange={setDialogOpen}>
-                        <DialogTrigger asChild>
-                          <Button variant="outline" size="sm" onClick={() => handleImageModalOpen(project.images)}>
-                            <ImageIcon className="mr-2 h-4 w-4" />
-                            이미지 보기
-                          </Button>
-                        </DialogTrigger>
-                        <DialogContent className="max-w-2xl p-6 overflow-hidden">
-                          <DialogHeader className="pb-4">
-                            <DialogTitle>{project.title} 이미지</DialogTitle>
-                            <DialogDescription>{project.subtitle} 프로젝트의 상세 이미지입니다.</DialogDescription>
-                          </DialogHeader>
-                          <div className="relative w-full h-[400px] sm:h-[500px] md:h-[600px] lg:h-[700px] overflow-hidden">
-                            {selectedProjectImages.length > 0 && (
-                              <Image
-                                src={selectedProjectImages[currentImageIndex] || "/placeholder.svg"}
-                                alt={`${project.title} 이미지 ${currentImageIndex + 1}`}
-                                fill
-                                className="object-contain"
-                              />
-                            )}
-                          </div>
-                          {selectedProjectImages.length > 1 && ( // 이미지가 1개 이상일 때만 페이징 표시
-                            <div className="flex items-center justify-center gap-4 mt-4">
-                              <Button
-                                variant="ghost"
-                                size="icon"
-                                onClick={handlePrevImage}
-                                disabled={currentImageIndex === 0}
-                              >
-                                <ChevronLeft className="h-6 w-6" />
-                                <span className="sr-only">이전 이미지</span>
-                              </Button>
-                              <span className="text-sm font-medium">
-                                {currentImageIndex + 1} / {selectedProjectImages.length}
-                              </span>
-                              <Button
-                                variant="ghost"
-                                size="icon"
-                                onClick={handleNextImage}
-                                disabled={currentImageIndex === selectedProjectImages.length - 1}
-                              >
-                                <ChevronRight className="h-6 w-6" />
-                                <span className="sr-only">다음 이미지</span>
-                              </Button>
+                      <div className="flex gap-2">
+                        {" "}
+                        {/* 이 div로 왼쪽 버튼들을 묶습니다 */}
+                        {/* 이미지 보기 모달 버튼 */}
+                        <Dialog open={dialogOpen} onOpenChange={setDialogOpen}>
+                          <DialogTrigger asChild>
+                            <Button variant="outline" size="sm" onClick={() => handleImageModalOpen(project.images)}>
+                              <ImageIcon className="mr-2 h-4 w-4" />
+                              이미지 보기
+                            </Button>
+                          </DialogTrigger>
+                          <DialogContent className="max-w-6xl p-0 bg-white">
+                            <DialogHeader className="p-6 pb-4">
+                              <DialogTitle>{project.title} 이미지</DialogTitle>
+                              <DialogDescription>{project.subtitle} 프로젝트의 상세 이미지입니다.</DialogDescription>
+                            </DialogHeader>
+                            <div className="relative w-full h-[400px] sm:h-[500px] md:h-[600px] lg:h-[700px] overflow-hidden">
+                              {selectedProjectImages.length > 0 && (
+                                <Image
+                                  key={selectedProjectImages[currentImageIndex]}
+                                  src={selectedProjectImages[currentImageIndex] || "/placeholder.svg"}
+                                  alt={`${project.title} 이미지 ${currentImageIndex + 1}`}
+                                  fill
+                                  className="object-contain"
+                                />
+                              )}
                             </div>
-                          )}
-                        </DialogContent>
-                      </Dialog>
-                      {!project.hideDemoButton &&
-                        (project.demoUrl === "#" ? (
-                          <Button variant="outline" size="sm" disabled>
-                            <ExternalLink className="mr-2 h-4 w-4" />
-                            결과 보기
-                          </Button>
-                        ) : (
-                          <Button variant="outline" size="sm" asChild>
-                            <Link href={project.demoUrl} target="_blank" rel="noopener noreferrer">
+                            {selectedProjectImages.length > 1 && (
+                              <>
+                                {/* ← 버튼 */}
+                                <button
+                                  onClick={handlePrevImage}
+                                  className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-white/70 hover:bg-white rounded-full p-2 shadow"
+                                  disabled={currentImageIndex === 0}
+                                >
+                                  <ChevronLeft className="h-6 w-6 text-black" />
+                                </button>
+
+                                {/* → 버튼 */}
+                                <button
+                                  onClick={handleNextImage}
+                                  className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-white/70 hover:bg-white rounded-full p-2 shadow"
+                                  disabled={currentImageIndex === selectedProjectImages.length - 1}
+                                >
+                                  <ChevronRight className="h-6 w-6 text-black" />
+                                </button>
+
+                                {/* 인덱스 */}
+                                <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 bg-black/60 text-white px-4 py-1 rounded-full text-sm">
+                                  {currentImageIndex + 1} / {selectedProjectImages.length}
+                                </div>
+                              </>
+                            )}
+                          </DialogContent>
+                        </Dialog>
+                        {!project.hideDemoButton &&
+                          (project.demoUrl === "#" ? (
+                            <Button variant="outline" size="sm" disabled>
                               <ExternalLink className="mr-2 h-4 w-4" />
                               결과 보기
-                            </Link>
-                          </Button>
-                        ))}
+                            </Button>
+                          ) : (
+                            <Button variant="outline" size="sm" asChild>
+                              <Link href={project.demoUrl} target="_blank" rel="noopener noreferrer">
+                                <ExternalLink className="mr-2 h-4 w-4" />
+                                결과 보기
+                              </Link>
+                            </Button>
+                          ))}
+                      </div>
                       {project.githubUrl === "#" ? (
                         <Button
                           variant="outline"
