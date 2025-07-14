@@ -22,7 +22,7 @@ export function Hero() {
           안녕하세요, <span className="text-primary">민재홍</span>입니다
         </h1>
         <p className="mt-6 text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto">
-          효율적으로 결과물을 만들어 내는 것을 좋아하는 개발자입니다. 기회가 된다면 협업해서 좋은 재료를 주거나, 찾고
+          안전하고 신뢰도 높은 작업을 만들어 내는 것을 좋아하는 개발자입니다. 기회가 된다면 협업해서 좋은 재료를 주거나, 찾고
           싶습니다
         </p>
         <div className="flex flex-wrap items-center justify-center gap-4 mt-8">

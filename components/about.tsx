@@ -19,7 +19,7 @@ export function About() {
           <div>
             <h2 className="text-3xl font-bold tracking-tight mb-8">저에 대해서</h2>
             <p className="text-muted-foreground mb-6 text-lg">
-              안녕하세요! 저는 혼자서도 탄탄한 결과물을 낼 수 있고, 동시에 타인과 협업할 때에도 신뢰받을 수 있는 개발자가 되고 싶은 민재홍입니다. .
+              안녕하세요! 저는 혼자서도 탄탄한 결과물을 낼 수 있고, 동시에 타인과 협업할 때에도 신뢰받을 수 있는 개발자가 되고 싶은 민재홍입니다. 
             </p>
             <p className="text-muted-foreground mb-6 text-lg">
               주요로 자신이 있는 분야는 웹에서는 백엔드이며, 학부시절부터 C, C++, JAVA, Python, MATLAB을 배웠었고, 주로
