@@ -22,8 +22,7 @@ export function Hero() {
           안녕하세요, <span className="text-primary">민재홍</span>입니다
         </h1>
         <p className="mt-6 text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto">
-          저는 주어진 자원과 시간 안에서 가장 효율적인 결과를 만들어내는 것을 중요하게 생각하는 개발자입니다.
-이러한 결과는 과정을 서로 명확히 공유하고, 협업을 통해 정확하게 구현하는 데서 나온다고 생각합니다.
+          정확한 구현과 효율적인 협업으로, 신뢰할 수 있는 결과를 만드는 개발자 입니다
 
         </p>
         <div className="flex flex-wrap items-center justify-center gap-4 mt-8">

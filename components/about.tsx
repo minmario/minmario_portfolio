@@ -19,25 +19,30 @@ export function About() {
          <div>
   <h2 className="text-3xl font-bold tracking-tight mb-8">저에 대해서</h2>
 
-  <p className="text-muted-foreground mb-6 text-lg">
-    저는 효율이란 단순한 속도나 단축이 아니라, 기능을 처음부터 정확히 구현하고 불필요한 중복을 줄이는 과정에서 비롯된다고 생각합니다.
-    이를 위해 기능이 중첩되지 않도록 팀원들과 사전 조율하고, 어떤 기능을 가장 잘 아는 동료의 조언을 들으며(아니면 내가 알려주며),
-    구현 후에는 함께 리체크하는 과정을 중요하게 여깁니다. 이러한 절차가 결국 재작업 없이 신뢰도 높은 결과물을 빠르게 만드는
-    진짜 효율이라고 믿습니다.
-  </p>
+<p className="text-muted-foreground mb-6 text-lg">
+  신뢰할 수 있는 결과물을 지향하는 개발자입니다. <br />
+  이를 위해 다음 세 가지 원칙을 개발 과정에서 실천하고 있습니다.
+</p>
 
-  <p className="text-muted-foreground mb-6 text-lg">
-    웹 개발 분야에서는 백엔드에 가장 자신이 있으며, 학부 시절부터 C, C++, Java, Python, MATLAB을 익혀왔고
-    특히 인공지능 관련 강의를 많이 수강했습니다. 프론트엔드는 다소 부족하지만, React, Next.js, TypeScript를 활용하여
-    백엔드와의 통신을 중심으로 간단한 기능 구현을 연습한 경험이 있습니다.
-  </p>
+<p className="text-muted-foreground mb-6 text-lg">
+  첫째, <strong>효율성</strong> – 기능이 중복되거나 충돌하지 않도록 팀원들과 사전 조율하고, <br />
+  구현 중 영향을 줄 수 있는 변경 사항은 미리 공유하여 협업의 흐름을 끊지 않도록 노력합니다.
+</p>
 
-  <p className="text-muted-foreground mb-6 text-lg">
-    저는 좋은 코드 사례를 찾아 프로젝트에 적용해보며 실무에 필요한 패턴과 설계를 꾸준히 익혀왔습니다.
-    최근에는 인공지능 도구를 활용해 반복 작업을 줄이고, 코드의 일관성과 생산성을 높이기 위한 실험을 진행하고 있습니다.
-    저의 최종적인 목표는 효율적인 개발을 넘어서, 팀 전체의 생산성과 코드의 확장성까지 함께 고려할 수 있는 개발자로 성장하는 것입니다.
-    특히 백엔드에서 쌓아온 경험을 바탕으로, 더 나은 시스템 설계와 구조 개선에 기여하고 싶습니다.
-  </p>
+<p className="text-muted-foreground mb-6 text-lg">
+  둘째, <strong>정확한 구현</strong> – 요구사항을 혼자 판단하지 않고, <br />
+  개발 전에 명확히 기록하고 충분히 질문·확인하는 과정을 통해 왜곡 없이 정확하게 반영하려 합니다.
+</p>
+
+<p className="text-muted-foreground mb-6 text-lg">
+  셋째, <strong>보안 의식</strong> – 민감 정보는 GitHub secret 기능을 활용해 감추고, <br />
+  Public 저장소에는 API 키나 비밀번호가 노출되지 않도록 항상 점검합니다. <br />
+  또한 JWT 기반 로그인 기능도 직접 구현하며, 인증·인가 구조에 대한 이해도를 높이고 있습니다.
+</p>
+
+<p className="text-muted-foreground mb-6 text-lg">
+  앞으로는 기능 구현을 넘어서 시스템 구조 개선과 팀 전체의 생산성까지 고려하는 백엔드 개발자로 성장하고자 합니다.
+</p>
 </div>
         </div>
       </div>
