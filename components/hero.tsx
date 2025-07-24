@@ -17,7 +17,7 @@ export function Hero() {
       <div className="absolute bottom-0 left-0 right-0 h-40 bg-gradient-to-t from-background to-transparent z-10" />
 
       {/* 콘텐츠 */}
-      <div className="relative z-20 max-w-4xl mx-auto text-center">
+      <div className="container relative z-20 max-w-4xl mx-auto text-center">
         <h1 className="text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl lg:text-7xl">
           안녕하세요, <span className="text-primary">민재홍</span>입니다
         </h1>
