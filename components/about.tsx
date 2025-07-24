@@ -16,7 +16,7 @@ export function About() {
               />
             </div>
           </div>
-          <div className="text-center max-w-2xl mx-auto">
+          <div className="text-left max-w-2xl mx-auto">
             <h2 className="text-3xl font-bold tracking-tight mb-8">저는</h2>
 
             <p className="text-muted-foreground mb-6 text-lg">
