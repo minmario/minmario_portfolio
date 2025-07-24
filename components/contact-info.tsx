@@ -5,7 +5,7 @@ export function ContactInfo() {
   return (
   <section className="relative flex flex-col items-center justify-center min-h-screen px-4 py-24 overflow-hidden">
     <section id="contact" className="py-32">
-      <div className="container px-4 md:px-6">
+      <div className="max-w-6xl mx-auto px-4 md:px-6">
         <div className="text-center mb-20">
           <h2 className="text-3xl font-bold tracking-tight mb-6">연락처</h2>
           <p className="text-muted-foreground max-w-2xl mx-auto text-lg">

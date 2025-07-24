@@ -36,7 +36,7 @@ export function Certifications() {
 
   return (
     <section id="certifications" className="py-32 bg-muted/30">
-      <div className="container px-4 md:px-6">
+      <div className="max-w-6xl mx-auto px-4 md:px-6">
         <div className="text-center mb-20">
           <h2 className="text-3xl font-bold tracking-tight mb-6">자격증</h2>
           <p className="text-muted-foreground max-w-2xl mx-auto text-lg">보유한 자격증 및 어학 성적입니다.</p>
