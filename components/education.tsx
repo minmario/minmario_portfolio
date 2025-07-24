@@ -33,7 +33,7 @@ export function Education() {
 
   return (
     <section id="education" className="py-32">
-      <div className="max-w-6xl mx-auto px-4 md:px-6">
+      <div className="container max-w-6xl mx-auto px-4 md:px-6">
         <div className="text-center mb-20">
           <h2 className="text-3xl font-bold tracking-tight mb-6">교육이수사항</h2>
           <p className="text-muted-foreground max-w-2xl mx-auto text-lg">제가 받은 교육과 학습 경험을 소개합니다.</p>
