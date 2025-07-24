@@ -209,7 +209,7 @@ export function Projects() {
         </div>
 
         {/* 프로젝트 목록 */}
-        <div className="space-y-16">
+        <div className="space-y-16 max-w-6xl mx-auto">
           {filteredProjects.length === 0 ? (
             <div className="text-center py-16">
               <p className="text-muted-foreground">해당 유형의 프로젝트가 없습니다.</p>

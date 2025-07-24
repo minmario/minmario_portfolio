@@ -48,7 +48,7 @@ export function ExternalLinks() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-6xl mx-auto">
           {links.map((link) => (
             <Link href={link.url} key={link.id} target="_blank" rel="noopener noreferrer">
               <Card className="h-full transition-all duration-300 hover:shadow-lg hover:border-primary">
