@@ -1,4 +1,4 @@
-import { Code, Database, Palette, Server } from "lucide-react"
+import { Code, Database, Layout, Palette, Server } from "lucide-react"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 
 export function Skills() {
@@ -9,7 +9,7 @@ export function Skills() {
           <h2 className="text-3xl font-bold tracking-tight mb-6">기술 스택</h2>
           <p className="text-muted-foreground max-w-2xl mx-auto text-lg">다양한 프로젝트를 통해 습득한 기술들입니다.</p>
         </div>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10 max-w-6xl mx-auto">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
           <Card>
             <CardHeader className="pb-2">
               <Code className="h-6 w-6 text-primary mb-2" />
@@ -56,6 +56,7 @@ export function Skills() {
               </ul>
             </CardContent>
           </Card>
+          
 
           <Card>
             <CardHeader className="pb-2">

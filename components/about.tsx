@@ -16,35 +16,34 @@ export function About() {
               />
             </div>
           </div>
-          <div className="text-center">
-            <h2 className="text-3xl font-bold tracking-tight mb-8">저는</h2>
+         <div>
+  <h2 className="text-3xl font-bold tracking-tight mb-8">저는</h2>
 
-            <p className="text-muted-foreground mb-6 text-lg">
-              신뢰할 수 있는 결과물을 지향하는 개발자입니다. <br />
-              이를 위해 다음 세 가지 원칙을 개발 과정에서 실천하고 있습니다.
-            </p>
+<p className="text-muted-foreground mb-6 text-lg">
+  신뢰할 수 있는 결과물을 지향하는 개발자입니다. <br />
+  이를 위해 다음 세 가지 원칙을 개발 과정에서 실천하고 있습니다.
+</p>
 
-            <p className="text-muted-foreground mb-6 text-lg">
-              첫째, <strong>효율성</strong> – 기능이 중복되거나 충돌하지 않도록 팀원들과 사전 조율하고, <br />
-              구현 중 영향을 줄 수 있는 변경 사항은 미리 공유하여 협업의 흐름을 끊지 않도록 노력합니다.
-            </p>
+<p className="text-muted-foreground mb-6 text-lg">
+  첫째, <strong>효율성</strong> – 기능이 중복되거나 충돌하지 않도록 팀원들과 사전 조율하고, <br />
+  구현 중 영향을 줄 수 있는 변경 사항은 미리 공유하여 협업의 흐름을 끊지 않도록 노력합니다.
+</p>
 
-            <p className="text-muted-foreground mb-6 text-lg">
-              둘째, <strong>정확한 구현</strong> – 요구사항을 혼자 판단하지 않고, <br />
-              개발 전에 명확히 기록하고 충분히 질문·확인하는 과정을 통해 왜곡 없이 정확하게 반영하려 합니다.
-            </p>
+<p className="text-muted-foreground mb-6 text-lg">
+  둘째, <strong>정확한 구현</strong> – 요구사항을 혼자 판단하지 않고, <br />
+  개발 전에 명확히 기록하고 충분히 질문·확인하는 과정을 통해 왜곡 없이 정확하게 반영하려 합니다.
+</p>
 
-            <p className="text-muted-foreground mb-6 text-lg">
-              셋째, <strong>보안 의식</strong> – 민감 정보는 GitHub secret 기능을 활용해 감추고, <br />
-              Public 저장소에는 API 키나 비밀번호가 노출되지 않도록 항상 점검합니다. <br />
-              또한 JWT 기반 로그인 기능도 직접 구현하며, 인증·인가 구조에 대한 이해도를 높이고 있습니다.
-            </p>
+<p className="text-muted-foreground mb-6 text-lg">
+  셋째, <strong>보안 의식</strong> – 민감 정보는 GitHub secret 기능을 활용해 감추고, <br />
+  Public 저장소에는 API 키나 비밀번호가 노출되지 않도록 항상 점검합니다. <br />
+  또한 JWT 기반 로그인 기능도 직접 구현하며, 인증·인가 구조에 대한 이해도를 높이고 있습니다.
+</p>
 
-            <p className="text-muted-foreground mb-6 text-lg">
-              앞으로는 기능 구현을 넘어서 시스템 구조 개선과 팀 전체의 생산성까지 고려하는 백엔드 개발자로 성장하고자
-              합니다.
-            </p>
-          </div>
+<p className="text-muted-foreground mb-6 text-lg">
+  앞으로는 기능 구현을 넘어서 시스템 구조 개선과 팀 전체의 생산성까지 고려하는 백엔드 개발자로 성장하고자 합니다.
+</p>
+</div>
         </div>
       </div>
     </section>

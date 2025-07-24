@@ -16,7 +16,8 @@ export function Certifications() {
       issuer: "한국데이터산업진흥원",
       date: "2025-06-27",
       description: "SQL 개발자 자격증",
-    },
+    }
+    ,
     {
       id: 3,
       name: "TOEIC",
@@ -41,7 +42,7 @@ export function Certifications() {
           <h2 className="text-3xl font-bold tracking-tight mb-6">자격증</h2>
           <p className="text-muted-foreground max-w-2xl mx-auto text-lg">보유한 자격증 및 어학 성적입니다.</p>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 max-w-6xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
           {certifications.map((cert) => (
             <Card key={cert.id} className="h-full">
               <CardHeader className="pb-2">

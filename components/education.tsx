@@ -38,7 +38,7 @@ export function Education() {
           <h2 className="text-3xl font-bold tracking-tight mb-6">교육이수사항</h2>
           <p className="text-muted-foreground max-w-2xl mx-auto text-lg">제가 받은 교육과 학습 경험을 소개합니다.</p>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 max-w-6xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
           {educationItems.map((item) => (
             <Card key={item.id} className="h-full">
               <CardHeader className="pb-2">
