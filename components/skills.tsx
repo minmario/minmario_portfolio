@@ -4,7 +4,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 export function Skills() {
   return (
     <section id="skills" className="py-32">
-      <div className="container px-4 md:px-6">
+      <div className="max-w-6xl mx-auto px-4 md:px-6">
         <div className="text-center mb-20">
           <h2 className="text-3xl font-bold tracking-tight mb-6">기술 스택</h2>
           <p className="text-muted-foreground max-w-2xl mx-auto text-lg">다양한 프로젝트를 통해 습득한 기술들입니다.</p>

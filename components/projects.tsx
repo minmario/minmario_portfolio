@@ -175,7 +175,7 @@ export function Projects() {
 
   return (
     <section id="projects" className="py-32 bg-muted/30">
-      <div className="container px-4 md:px-6">
+      <div className="max-w-6xl mx-auto px-4 md:px-6">
         <div className="text-center mb-12">
           <h2 className="text-3xl font-bold tracking-tight mb-6">프로젝트</h2>
           <p className="text-muted-foreground max-w-2xl mx-auto text-lg mb-8">
