@@ -3,7 +3,7 @@ import Image from "next/image"
 export function About() {
   return (
     <section id="about" className="py-32 bg-muted/30">
-      <div className="container px-4 md:px-6">
+      <div className="max-w-6xl mx-auto px-4 md:px-6">
         <div className="grid gap-16 lg:grid-cols-2 lg:gap-24 items-center">
           <div className="flex justify-center lg:justify-end">
             <div className="relative w-[300px] h-[300px] sm:w-[340px] sm:h-[340px] md:w-[380px] md:h-[380px] overflow-hidden rounded-full border-4 border-primary">
