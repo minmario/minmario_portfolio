@@ -31,6 +31,7 @@ interface Project {
   results: string
   type: "team" | "personal"
   hideDemoButton?: boolean
+  hideImageButton?: boolean
 }
 
 export function Projects() {
@@ -120,6 +121,7 @@ export function Projects() {
       results: "효과적인 포트폴리오 웹사이트로, 프로젝트와 기술 스택을 시각적으로 표현했습니다.",
       type: "personal",
       hideDemoButton: true,
+      hideImageButton: true,
     },
     {
       id: 5,
@@ -284,58 +286,60 @@ export function Projects() {
                       <div className="flex gap-2">
                         {" "}
                         {/* 이 div로 왼쪽 버튼들을 묶습니다 */}
-                        {/* 이미지 보기 모달 버튼 */}
-                        <Dialog open={dialogOpen} onOpenChange={setDialogOpen}>
-                          <DialogTrigger asChild>
-                            <Button variant="outline" size="sm" onClick={() => handleImageModalOpen(project.images)}>
-                              <ImageIcon className="mr-2 h-4 w-4" />
-                              이미지 보기
-                            </Button>
-                          </DialogTrigger>
-                          <DialogContent className="max-w-6xl p-0 bg-white">
-                            <DialogHeader className="p-6 pb-4">
-                              <DialogTitle>{project.title} 이미지</DialogTitle>
-                              <DialogDescription>{project.subtitle} 프로젝트의 상세 이미지입니다.</DialogDescription>
-                            </DialogHeader>
-                            <div className="relative w-full h-[400px] sm:h-[500px] md:h-[600px] lg:h-[700px] overflow-hidden">
-                              {selectedProjectImages.length > 0 && (
-                                <Image
-                                  key={selectedProjectImages[currentImageIndex]}
-                                  src={selectedProjectImages[currentImageIndex] || "/placeholder.svg"}
-                                  alt={`${project.title} 이미지 ${currentImageIndex + 1}`}
-                                  fill
-                                  className="object-contain"
-                                />
+                        {/* 이미지 보기 모달 버튼 - hideImageButton이 true가 아닐 때만 표시 */}
+                        {!project.hideImageButton && (
+                          <Dialog open={dialogOpen} onOpenChange={setDialogOpen}>
+                            <DialogTrigger asChild>
+                              <Button variant="outline" size="sm" onClick={() => handleImageModalOpen(project.images)}>
+                                <ImageIcon className="mr-2 h-4 w-4" />
+                                이미지 보기
+                              </Button>
+                            </DialogTrigger>
+                            <DialogContent className="max-w-6xl p-0 bg-white">
+                              <DialogHeader className="p-6 pb-4">
+                                <DialogTitle>{project.title} 이미지</DialogTitle>
+                                <DialogDescription>{project.subtitle} 프로젝트의 상세 이미지입니다.</DialogDescription>
+                              </DialogHeader>
+                              <div className="relative w-full h-[400px] sm:h-[500px] md:h-[600px] lg:h-[700px] overflow-hidden">
+                                {selectedProjectImages.length > 0 && (
+                                  <Image
+                                    key={selectedProjectImages[currentImageIndex]}
+                                    src={selectedProjectImages[currentImageIndex] || "/placeholder.svg"}
+                                    alt={`${project.title} 이미지 ${currentImageIndex + 1}`}
+                                    fill
+                                    className="object-contain"
+                                  />
+                                )}
+                              </div>
+                              {selectedProjectImages.length > 1 && (
+                                <>
+                                  {/* ← 버튼 */}
+                                  <button
+                                    onClick={handlePrevImage}
+                                    className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-white/70 hover:bg-white rounded-full p-2 shadow"
+                                    disabled={currentImageIndex === 0}
+                                  >
+                                    <ChevronLeft className="h-6 w-6 text-black" />
+                                  </button>
+
+                                  {/* → 버튼 */}
+                                  <button
+                                    onClick={handleNextImage}
+                                    className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-white/70 hover:bg-white rounded-full p-2 shadow"
+                                    disabled={currentImageIndex === selectedProjectImages.length - 1}
+                                  >
+                                    <ChevronRight className="h-6 w-6 text-black" />
+                                  </button>
+
+                                  {/* 인덱스 */}
+                                  <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 bg-black/60 text-white px-4 py-1 rounded-full text-sm">
+                                    {currentImageIndex + 1} / {selectedProjectImages.length}
+                                  </div>
+                                </>
                               )}
-                            </div>
-                            {selectedProjectImages.length > 1 && (
-                              <>
-                                {/* ← 버튼 */}
-                                <button
-                                  onClick={handlePrevImage}
-                                  className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-white/70 hover:bg-white rounded-full p-2 shadow"
-                                  disabled={currentImageIndex === 0}
-                                >
-                                  <ChevronLeft className="h-6 w-6 text-black" />
-                                </button>
-
-                                {/* → 버튼 */}
-                                <button
-                                  onClick={handleNextImage}
-                                  className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-white/70 hover:bg-white rounded-full p-2 shadow"
-                                  disabled={currentImageIndex === selectedProjectImages.length - 1}
-                                >
-                                  <ChevronRight className="h-6 w-6 text-black" />
-                                </button>
-
-                                {/* 인덱스 */}
-                                <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 bg-black/60 text-white px-4 py-1 rounded-full text-sm">
-                                  {currentImageIndex + 1} / {selectedProjectImages.length}
-                                </div>
-                              </>
-                            )}
-                          </DialogContent>
-                        </Dialog>
+                            </DialogContent>
+                          </Dialog>
+                        )}
                         {!project.hideDemoButton &&
                           (project.demoUrl === "#" ? (
                             <Button variant="outline" size="sm" disabled>
