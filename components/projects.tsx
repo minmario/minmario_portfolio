@@ -39,6 +39,7 @@ export function Projects() {
   const [selectedProjectImages, setSelectedProjectImages] = useState<string[]>([])
   const [currentImageIndex, setCurrentImageIndex] = useState(0)
   const [dialogOpen, setDialogOpen] = useState(false)
+  const [selectedProject, setSelectedProject] = useState<Project | null>(null)
 
   const projects: Project[] = [
     {
@@ -182,8 +183,9 @@ export function Projects() {
     return project.type === activeFilter
   })
 
-  const handleImageModalOpen = (images: string[]) => {
-    setSelectedProjectImages(images)
+  const handleImageModalOpen = (project: Project) => {
+    setSelectedProject(project)
+    setSelectedProjectImages(project.images)
     setCurrentImageIndex(0)
     setDialogOpen(true)
   }
@@ -290,15 +292,17 @@ export function Projects() {
                         {!project.hideImageButton && (
                           <Dialog open={dialogOpen} onOpenChange={setDialogOpen}>
                             <DialogTrigger asChild>
-                              <Button variant="outline" size="sm" onClick={() => handleImageModalOpen(project.images)}>
+                              <Button variant="outline" size="sm" onClick={() => handleImageModalOpen(project)}>
                                 <ImageIcon className="mr-2 h-4 w-4" />
                                 이미지 보기
                               </Button>
                             </DialogTrigger>
                             <DialogContent className="max-w-6xl p-0 bg-white">
                               <DialogHeader className="p-6 pb-4">
-                                <DialogTitle>{project.title} 이미지</DialogTitle>
-                                <DialogDescription>{project.subtitle} 프로젝트의 상세 이미지입니다.</DialogDescription>
+                                <DialogTitle>{selectedProject?.title} 이미지</DialogTitle>
+                                <DialogDescription>
+                                  {selectedProject?.subtitle} 프로젝트의 상세 이미지입니다.
+                                </DialogDescription>
                               </DialogHeader>
                               <div className="relative w-full h-[400px] sm:h-[500px] md:h-[600px] lg:h-[700px] overflow-hidden">
                                 {selectedProjectImages.length > 0 && (
