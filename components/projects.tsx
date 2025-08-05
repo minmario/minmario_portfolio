@@ -107,9 +107,34 @@ export function Projects() {
         "XGBoost와 RandomForest 모델이 전체적으로 가장 우수한 성능을 보였으며, 튜닝 후 F1-score 기준 91% 이상의 성능 확보. 모델별 ROC-AUC 시각화를 통해 민감도/특이도 균형 분석.",
       type: "team",
     },
-
     {
-      id: 4,
+      id: 3,
+      title: "CycleGAN as Data Augmentation",
+      subtitle: "RGB 영상을 열화상 이미지로 변환하는 딥러닝 프로젝트",
+      description:
+        "PyTorch 기반의 CycleGAN 모델을 활용하여 RGB 영상을 열화상(IR) 이미지로 변환하는 프로젝트입니다. 고가의 열화상 카메라 장비 없이도 일반 영상을 딥러닝으로 변환할 수 있는 가능성을 실험했습니다. 다양한 GAN 모드와 네트워크 구성을 비교하고, SSIM·PSNR·투표 기반의 3단계 평가를 통해 성능을 정량·정성적으로 분석했습니다.",
+      images: [
+        "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/%ED%99%94%EB%A9%B4%20%EC%BA%A1%EC%B2%98%202025-08-05%20193914-7ESzfghMZMOsVgFOqUpoJ1NtLnxxbP.png",
+        "/placeholder.svg?height=600&width=800&text=CycleGAN+Results+1",
+        "/placeholder.svg?height=600&width=800&text=CycleGAN+Results+2",
+      ],
+      tags: ["Python", "PyTorch", "CycleGAN", "OpenCV", "NumPy", "Scikit-image", "Computer Vision", "GAN"],
+      demoUrl: "https://drive.google.com/file/d/1UKRfv3IKp5ptI8LZbd0Qs7set5_Z_PbA/view?usp=drive_link",
+      githubUrl: "#",
+      highlights: [
+        "CycleGAN 구조 분석 및 다양한 GAN 모드(vanilla, LSGAN, WGAN-GP) 실험",
+        "ResNet, PatchGAN 등 네트워크 구성 변경을 통한 성능 비교",
+        "SSIM, PSNR, 투표 기반의 3단계 평가 시스템 구축",
+        "Moaform 외부 설문 플랫폼을 활용한 정성적 평가 시스템 도입",
+        "영어 발표 및 PPT 제작을 통한 기술 커뮤니케이션 역량 강화",
+        "팀 협업을 통한 아이디어 발굴 및 프로젝트 방향성 설정",
+      ],
+      results:
+        "RGB 영상을 열화상 이미지로 변환하는 CycleGAN 모델 구현 완료. 다양한 GAN 구조 비교를 통해 최적 성능 모델 도출. 정량적(SSIM, PSNR) 및 정성적(투표) 평가를 통한 체계적 성능 분석. 영어 발표를 통한 국제적 커뮤니케이션 역량 및 팀워크 협업 능력 향상.",
+      type: "team",
+    },
+    {
+      id: 5,
       title: "포트폴리오 웹사이트",
       subtitle: "개인 포트폴리오 웹사이트",
       description:
@@ -125,7 +150,7 @@ export function Projects() {
       hideImageButton: true,
     },
     {
-      id: 5,
+      id: 6,
       title: "재고 및 주문 관리 시스템",
       subtitle: "PHP와 MySQL 기반의 CRUD 웹 애플리케이션",
       description:
@@ -146,7 +171,7 @@ export function Projects() {
       type: "personal",
     },
     {
-      id: 6,
+      id: 7,
       title: "무신사 클론 프로젝트",
       subtitle: "풀스택 이커머스 및 소셜 미디어 플랫폼",
       description:
