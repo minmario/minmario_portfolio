@@ -133,22 +133,7 @@ export function Projects() {
         "RGB 영상을 열화상 이미지로 변환하는 CycleGAN 모델 구현 완료. 다양한 GAN 구조 비교를 통해 최적 성능 모델 도출. 정량적(SSIM, PSNR) 및 정성적(투표) 평가를 통한 체계적 성능 분석. 영어 발표를 통한 국제적 커뮤니케이션 역량 및 팀워크 협업 능력 향상.",
       type: "team",
     },
-    {
-      id: 5,
-      title: "포트폴리오 웹사이트",
-      subtitle: "개인 포트폴리오 웹사이트",
-      description:
-        "Next.js와 Tailwind CSS를 사용하여 개발한 개인 포트폴리오 웹사이트입니다. 반응형 디자인과 모던한 UI/UX를 적용했습니다.",
-      images: ["/images/portfolio-website.png", "/placeholder.svg?height=600&width=800&text=Portfolio+Image+2"],
-      tags: ["Next.js", "React", "Tailwind CSS", "TypeScript"],
-      demoUrl: "#",
-      githubUrl: "#",
-      highlights: ["반응형 디자인 구현", "모던한 UI/UX 적용", "다크 모드 지원", "SEO 최적화"],
-      results: "효과적인 포트폴리오 웹사이트로, 프로젝트와 기술 스택을 시각적으로 표현했습니다.",
-      type: "personal",
-      hideDemoButton: true,
-      hideImageButton: true,
-    },
+    
     {
       id: 6,
       title: "재고 및 주문 관리 시스템",
