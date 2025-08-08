@@ -125,7 +125,7 @@ export function Projects() {
         "CycleGAN 구조 분석 및 다양한 GAN 모드(vanilla, LSGAN, WGAN-GP) 실험",
         "ResNet, PatchGAN 등 네트워크 구성 변경을 통한 성능 비교",
         "SSIM, PSNR, 투표 기반의 3단계 평가 시스템 구축",
-        "Moaform 외부 설문 플랫폼을 활용한 정성적 평가 시스템 도입",
+        "Moaform 외부 설문 플랫폼을 활용한 정성적 ���가 시스템 도입",
         "영어 발표 및 PPT 제작을 통한 기술 커뮤니케이션 역량 강화",
         "팀 협업을 통한 아이디어 발굴 및 프로젝트 방향성 설정",
       ],
