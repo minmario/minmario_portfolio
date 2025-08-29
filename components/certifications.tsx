@@ -32,6 +32,13 @@ export function Certifications() {
       date: "2020-02-03",
       description: "자동차 운전 자격증",
     },
+    {
+      id: 5,
+      name: "ADsP",
+      issuer: "한국데이터산업진흥원",
+      date: "2025-08-29",
+      description: "데이터 분석 준전문가 자격증 - 데이터 이해, 처리, 분석 기법에 대한 전문 지식",
+    },
   ]
 
   return (
