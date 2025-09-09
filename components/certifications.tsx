@@ -34,9 +34,9 @@ export function Certifications() {
     },
     {
       id: 5,
-      name: "(사전)ADsP",
+      name: "ADsP",
       issuer: "한국데이터산업진흥원",
-      date: "2025-08-29",
+      date: "2025-09-05",
       description: "데이터 분석 준전문가 자격증 - 데이터 이해, 처리, 분석 기법에 대한 전문 지식",
     },
   ]
