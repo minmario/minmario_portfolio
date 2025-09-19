@@ -39,6 +39,14 @@ export function Certifications() {
       date: "2025-09-05",
       description: "데이터 분석 준전문가 자격증 - 데이터 이해, 처리, 분석 기법에 대한 전문 지식",
     },
+    {
+      id: 6
+      name: "빅데이터분석기사(필기)"
+      issuer: "한국데이터산업진흥원",
+      date: "2025-09-19",
+      description: "빅데이터 분석기사 자격증 - 데이터 이해, 처리 분석 기법을 실습과 같이 공부"
+
+    }
   ]
 
   return (
