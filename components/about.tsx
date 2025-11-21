@@ -8,7 +8,7 @@ export function About() {
           <div className="flex justify-center lg:justify-end">
             <div className="relative w-[300px] h-[300px] sm:w-[340px] sm:h-[340px] md:w-[380px] md:h-[380px] overflow-hidden rounded-full border-4 border-primary">
               <Image
-                src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/KakaoTalk_20241015_013729850.jpg-hOlqLR1gw6VF32mOBmoe2yFFL2CGWW.jpeg"
+                src="/images/design-mode/KakaoTalk_20241015_013729850.jpg.jpeg"
                 alt="민재홍 프로필 이미지"
                 fill
                 className="object-cover"
